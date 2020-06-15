@@ -23,13 +23,14 @@ class Gallery extends React.Component {
 
     let pictures = this.props.data.map(elem => (
       <div key={elem[0]}>
-        <img src={elem[1]} alt=''/>
+        <img src={elem[0]} alt=''/>
+        <h6>{elem[1]}</h6>
       </div>
     ))
     return (
       <div>
-        Gallery
-        <div>
+        <h1>Gallery</h1>
+        <div class="grid-container">
           {pictures}
         </div>
       </div>        

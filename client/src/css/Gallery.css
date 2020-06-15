@@ -1,0 +1,19 @@
+img {
+  border: 5px ridge goldenrod;
+  width: 400px;
+  height: auto;
+  background-color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  column-gap: 50px;
+  margin: 0px 20px 0px 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+}

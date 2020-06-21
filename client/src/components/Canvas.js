@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/Canvas.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { postPicture } from '../actions';
+import { postPicture } from '../actions/pictureActions';
 
 class Canvas extends React.Component {
 
@@ -19,6 +19,7 @@ class Canvas extends React.Component {
 
     const borderX = 10;
     const borderY = 10;
+    const margin = 20;
 
     window.addEventListener('resize', () => {
       canvas.width = Math.floor(window.innerWidth / 2);
@@ -37,7 +38,7 @@ class Canvas extends React.Component {
           mouse.down = false
           return
         }
-        if (event.y >= Math.floor(window.innerHeight / 2) + borderY) {
+        if (event.y >= Math.floor(window.innerHeight / 2) + borderY + margin || event.y <= margin) {
           mouse.down = false
           return
         }
@@ -80,7 +81,7 @@ class Canvas extends React.Component {
         let dataURL = {src: canvas.toDataURL()};
         //console.log(dataURL);
         //document.getElementById('saved').src = dataURL;
-        this.props.postPicture(dataURL);
+        this.props.postPicture(dataURL, this.props.data.token);
         break;
       default:
         break;
@@ -129,7 +130,7 @@ Canvas.protoTypes = {
 }
 
 const mapStateToProps = state => ({
-  data: state.pictures
+  data: state.authReducer
 })
 
 export default connect (mapStateToProps, { postPicture })(Canvas);

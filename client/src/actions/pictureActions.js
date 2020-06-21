@@ -5,11 +5,23 @@ export const getPictures = () => (dispatch) => {
     .catch(err => console.log(err))
 }
 
-export const postPicture = (url) => (dispatch) => {
+export const postPicture = (url, token) => (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  if (token) {
+    config.headers['x-auth-token'] = token
+    console.log(config)
+  }
+
   fetch('/api/pictures', {
     method: 'POST', 
     headers: {
       'Content-Type': 'application/json',
+      'x-auth-token': token
     },
     body: JSON.stringify(url)
   })

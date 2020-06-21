@@ -1,6 +1,7 @@
 canvas {
   border: 10px ridge goldenrod;
   background-color: white;
+  margin-top: 20px;
 }
 
 .canvasContainer {

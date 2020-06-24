@@ -3,6 +3,8 @@ import '../css/Canvas.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { postPicture } from '../actions/pictureActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEraser, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons'
 
 class Canvas extends React.Component {
 
@@ -88,36 +90,38 @@ class Canvas extends React.Component {
     }
   }
 
-  render() {
+  render() {  
     return (
       <div className='drawingApp'>
         <div className='canvasContainer'>
           <canvas ref='canvas'></canvas>
         </div>
-        <div>
+        <div className='tools'>
+          <div className='buttons'>      
+            <button onClick={this.onClick} name='color' id='black' style={{backgroundColor: 'black'}}></button>
+            <button onClick={this.onClick} name='color' id='gray' style={{backgroundColor: 'gray'}}></button>
+            <button onClick={this.onClick} name='color' id='red' style={{backgroundColor: 'red'}}></button>
+            <button onClick={this.onClick} name='color' id='orange' style={{backgroundColor: 'orange'}}></button>
+            <button onClick={this.onClick} name='color' id='yellow' style={{backgroundColor: 'yellow'}}></button>
+            <button onClick={this.onClick} name='color' id='green' style={{backgroundColor: 'green'}}></button>
+            <button onClick={this.onClick} name='color' id='blue' style={{backgroundColor: 'blue'}}></button>
+            <button onClick={this.onClick} name='color' id='purple' style={{backgroundColor: 'purple'}}></button>
+            <button onClick={this.onClick} name='color' id='white' className='icons btn-erase'><FontAwesomeIcon icon={faEraser} size="lg"/> Eraser</button>
+            <button onClick={this.onClick} name='clear' className='icons btn-clear'><FontAwesomeIcon icon={faTrashAlt} size="lg"/> Clear</button>
+            <button onClick={this.onClick} name='save' className='icons btn-save'><FontAwesomeIcon icon={faSave} size="lg"/> Save</button>
+          </div>
+          <div>
+            <label>Size: </label>
+            <input type="range" name="size" min="1" max="5" defaultValue="1" step="1" onChange={this.onClick} className='slider'/>   
+          </div>
+        </div>
+        <div className='instructions'>
           <h2>How to use:</h2>
           <ul>
             <li>Use your mouse and hold down left click in the canvas to start drawing.</li>
-            <li>You can change the line color and size using the buttons below.</li>
+            <li>You can change the line color and size using the buttons.</li>
             <li>To display your drawing in the gallery, click on save when you are done drawing.</li>
           </ul>
-        </div>
-        <div className='buttons'>      
-          <button onClick={this.onClick} name='color' id='black' style={{backgroundColor: 'black'}}></button>
-          <button onClick={this.onClick} name='color' id='gray' style={{backgroundColor: 'gray'}}></button>
-          <button onClick={this.onClick} name='color' id='red' style={{backgroundColor: 'red'}}></button>
-          <button onClick={this.onClick} name='color' id='orange' style={{backgroundColor: 'orange'}}></button>
-          <button onClick={this.onClick} name='color' id='yellow' style={{backgroundColor: 'yellow'}}></button>
-          <button onClick={this.onClick} name='color' id='green' style={{backgroundColor: 'green'}}></button>
-          <button onClick={this.onClick} name='color' id='blue' style={{backgroundColor: 'blue'}}></button>
-          <button onClick={this.onClick} name='color' id='purple' style={{backgroundColor: 'purple'}}></button>
-          <button onClick={this.onClick} name='color' id='white'>Eraser</button>
-          <button onClick={this.onClick} name='clear'>Clear</button>
-          <button onClick={this.onClick} name='save'>Save</button>
-        </div>
-        <div>
-          <label>Size</label>
-          <input type="range" name="size" min="1" max="5" defaultValue="1" step="1" onChange={this.onClick}/>   
         </div>
       </div>        
     )

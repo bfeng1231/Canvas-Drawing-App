@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router();
-const auth = require('../../middleware/auth')
+const path = require('path')
+const auth = require(path.join(__dirname, '../../middleware/auth'))
 
-const Picture = require('../../models/pictures');
+const Picture = require(path.join(__dirname, '../../models/pictures'));
 
 router.get('/', (req, res) => {
   Picture.find()

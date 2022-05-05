@@ -14,6 +14,7 @@ mongoose.connect(db, {useUnifiedTopology: true, useNewUrlParser: true})
 
 app.use('/api/pictures', require('./routes/api/pictures'))
 app.use('/api/user', require('./routes/api/user'))
+app.use(serveStatic(__dirname + '/client/build'))
 
 const port = process.env.PORT || 5000;
 

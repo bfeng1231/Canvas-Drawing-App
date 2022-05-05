@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const secret = require('../../config').jwtSecret
+const path = require('path')
+const secret = require(path.join(__dirname, '../../config')).jwtSecret
 
 router.get('/', (req, res) => {
   jwt.sign(
